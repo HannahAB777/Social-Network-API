@@ -1,8 +1,11 @@
-
+const User = require('./user');
 
 const reactionSchema = new Schema(
     {
-     //reaction id
+      reactionId: {
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId(),
+      },
 
       reactionBody: {
         type: String,
@@ -15,7 +18,10 @@ const reactionSchema = new Schema(
         ref: 'user',
       }
     ],
-  //created at
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
 },
 {
     toJSON: {

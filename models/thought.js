@@ -1,4 +1,5 @@
 const User = require('./user');
+const reactionSchema = require('./reaction');
 const thoughtSchema = new Schema(
     {
       thoughtText: {
@@ -7,13 +8,17 @@ const thoughtSchema = new Schema(
         min_length: 1,
         max_length: 280,
       },
-      //created at, date, default is the timestamp, use a getter method to get time stamp
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+      // getter method to get time stamp
       userName: {
           type: string,
           ref: 'user'
       },
       reactions:[ 
-          //reactions
+          reactionSchema
     ],
 },
 {
